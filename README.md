@@ -16,25 +16,25 @@ The  ``gridworld_exploration`` directory contains code for the deep RL experimen
 For the "baseline" maze environment, using AC-State:
 
 ```bash
-python3 main.py --data periodic-cart  --k_steps ${K}  --ncodes ${NCODES}  --seed ${SEED}  --exo_noise two_maze  --num_exo 8 --env_iteration 5000 --policy_selection random --no_reset_actions --stochastic_start stochastic --ep_length 200 --model_train_iter 5000 --eval_iter 5000 --num_iter 30000  --log_eval_prefix ./path/to/eval/log --no_restart false --use_best_model 
+python3 main.py --data maze  --k_steps ${K}  --ncodes ${NCODES}  --seed ${SEED}  --exo_noise two_maze --num_exo 8 --env_iteration 5000 --policy_selection random --no_reset_actions   --stochastic_start stochastic --ep_length 5000 --model_train_iter 5000 --eval_iter 5000 --num_iter 30000   --log_eval_prefix ./path/to/eval/log --no_restart true --use_best_model 
 ```
 
 For the "baseline" maze environment, using ACDF (that is, using a forward model loss):
 
 ```bash
-python3 main.py --data periodic-cart  --k_steps ${K}  --ncodes ${NCODES}  --seed ${SEED}  --exo_noise two_maze  --num_exo 8 --env_iteration 5000 --policy_selection random --no_reset_actions --stochastic_start stochastic --ep_length 200 --model_train_iter 5000 --eval_iter 5000 --num_iter 30000  --log_eval_prefix ./path/to/eval/log --no_restart false --use_best_model --use_forward
+python3 main.py --data maze  --k_steps ${K}  --ncodes ${NCODES}  --seed ${SEED}  --exo_noise two_maze --num_exo 8 --env_iteration 5000 --policy_selection random --no_reset_actions   --stochastic_start stochastic --ep_length 5000 --model_train_iter 5000 --eval_iter 5000 --num_iter 30000   --log_eval_prefix ./path/to/eval/log --no_restart true --use_best_model --use_forward 
 ```
 
 For the "periodic" environment, using AC-State:
 
 ```bash
-python3 main.py --data maze  --k_steps ${K}  --ncodes ${NCODES}  --seed ${SEED}  --exo_noise two_maze --num_exo 8 --env_iteration 5000 --policy_selection random --no_reset_actions   --stochastic_start stochastic --ep_length 5000 --model_train_iter 5000 --eval_iter 5000 --num_iter 30000   --log_eval_prefix ./path/to/eval/log --no_restart true --use_best_model 
+python3 main.py --data periodic-cart  --k_steps ${K}  --ncodes ${NCODES}  --seed ${SEED}  --exo_noise two_maze  --num_exo 8 --env_iteration 5000 --policy_selection random --no_reset_actions --stochastic_start stochastic --ep_length 200 --model_train_iter 5000 --eval_iter 5000 --num_iter 30000  --log_eval_prefix ./path/to/eval/log --no_restart false --use_best_model 
 ```
 
 For the "periodic" environment, using ACDF:
 
 ```bash
-python3 main.py --data maze  --k_steps ${K}  --ncodes ${NCODES}  --seed ${SEED}  --exo_noise two_maze --num_exo 8 --env_iteration 5000 --policy_selection random --no_reset_actions   --stochastic_start stochastic --ep_length 5000 --model_train_iter 5000 --eval_iter 5000 --num_iter 30000   --log_eval_prefix ./path/to/eval/log --no_restart true --use_best_model --use_forward 
+python3 main.py --data periodic-cart  --k_steps ${K}  --ncodes ${NCODES}  --seed ${SEED}  --exo_noise two_maze  --num_exo 8 --env_iteration 5000 --policy_selection random --no_reset_actions --stochastic_start stochastic --ep_length 200 --model_train_iter 5000 --eval_iter 5000 --num_iter 30000  --log_eval_prefix ./path/to/eval/log --no_restart false --use_best_model --use_forward
 ```
 
 In addition to printing the success rate of open-loop planning trials, these commands will also save this information in files specified by the ``--log_eval_prefix`` option, with filenames in the format ``${PATH_PREFIX}_it_${ENV_ITERATION}_train_it_${TRAINING_ITERATION}_seed_${SEED}.pth``. This .pth file will contain a python dictionary where the "wins" key specifies the number of planning trials out of 1000 for which the learned encoder allowed for correct open-loop planning.
